@@ -50,7 +50,7 @@ jobs:
           # get yarn cache directory path, if none, set yarn cache
           dir=$(yarn cache dir)
           # if dir is empty, set yarn cache to a default value
-          if [ -z "$dir" ]; then
+          if [[ -z "$dir" ]]; then
             dir=".build/yarn_cache"
             yarn config set cache-folder $dir
           fi
