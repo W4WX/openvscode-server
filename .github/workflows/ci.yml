@@ -188,7 +188,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          xcode-select --install
 
       - name: Compute node modules cache key
         id: nodeModulesCacheKey
@@ -215,7 +214,9 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
-        run: yarn --frozen-lockfile --network-timeout 180000
+        run: |
+          xcode-select --install
+          yarn --frozen-lockfile --network-timeout 180000
 
       - name: Compile and Download
         run: yarn npm-run-all --max-old-space-size=4095 -lp compile "electron x64" playwright-install download-builtin-extensions
