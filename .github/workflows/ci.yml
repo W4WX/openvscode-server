@@ -188,6 +188,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+          xcode-select --install
 
       - name: Compute node modules cache key
         id: nodeModulesCacheKey
