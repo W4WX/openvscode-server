@@ -47,9 +47,8 @@ jobs:
         id: yarnCacheDirPath
         if: ${{ steps.cacheNodeModules.outputs.cache-hit != 'true' }}
         run: |
-          dir=$(yarn cache dir)
-          dir=${dir:-".build/yarn_cache"}
-          echo "dir=$dir" >> $GITHUB_OUTPUT
+          $dir = yarn cache dir
+          "$dir" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
       - name: Cache yarn directory
         if: ${{ steps.cacheNodeModules.outputs.cache-hit != 'true' }}
         uses: actions/cache@v4
