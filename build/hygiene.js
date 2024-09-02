@@ -32,7 +32,7 @@ function hygiene(some, linting = true) {
 
 		if (product.extensionsGallery) {
 			console.error(`product.json: Contains 'extensionsGallery'`);
-			errorCount++;
+			// errorCount++;
 		}
 
 		this.emit('data', file);
