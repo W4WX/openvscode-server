@@ -47,14 +47,9 @@ jobs:
         id: yarnCacheDirPath
         if: ${{ steps.cacheNodeModules.outputs.cache-hit != 'true' }}
         run: |
-          # get yarn cache directory path, if none, set yarn cache
           dir=$(yarn cache dir)
-          # if dir is empty, set yarn cache to a default value
-          if [[ -z "$dir" ]]; then
-            dir=".build/yarn_cache"
-            yarn config set cache-folder $dir
-          fi
-          echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+          dir=${dir:-".build/yarn_cache"}
+          echo "dir=$dir" >> $GITHUB_OUTPUT
       - name: Cache yarn directory
         if: ${{ steps.cacheNodeModules.outputs.cache-hit != 'true' }}
         uses: actions/cache@v4
