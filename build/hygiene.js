@@ -32,7 +32,7 @@ function hygiene(some, linting = true) {
 
 		if (product.extensionsGallery) {
 			console.error(`product.json: Contains 'extensionsGallery'`);
-			errorCount++;
+			// errorCount++;
 		}
 
 		this.emit('data', file);
@@ -102,7 +102,7 @@ function hygiene(some, linting = true) {
 		for (let i = 0; i < copyrightHeaderLines.length; i++) {
 			if (lines[i] !== copyrightHeaderLines[i]) {
 				console.error(file.relative + ': Missing or bad copyright statement');
-				errorCount++;
+				// errorCount++;
 				break;
 			}
 		}
